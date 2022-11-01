@@ -1,9 +1,14 @@
 package br.com.imdb;
 
 import br.com.imdb.gateway.client.ImdbClient;
+import br.com.imdb.service.Jsonformatter;
 
 import java.net.http.HttpClient;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ImdbApplication {
 
@@ -12,11 +17,11 @@ public class ImdbApplication {
         ImdbClient imdb = new ImdbClient();
 
         var client = HttpClient.newHttpClient();
-        var response = imdb.findTop250Movies(apiKey, client);
+        var response = imdb.findTop250Movies(apiKey, client).body();
 
-        System.out.println(response.statusCode());
-        System.out.println(response.body());
-
+        Jsonformatter.jsonParse(response);
     }
+
+
 
 }
