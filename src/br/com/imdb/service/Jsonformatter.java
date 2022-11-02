@@ -33,6 +33,14 @@ public class Jsonformatter {
         return parseAtribute(moviesArray, 5);
     }
 
+    public static List<String> rantingParse(String[] moviesArray) {
+        return parseAtribute(moviesArray, 7);
+    }
+
+    public static List<String> yearParse(String[] moviesArray) {
+        return  parseAtribute(moviesArray, 4);//5
+    }
+
     private static List<String> parseAtribute(String[] moviesArray, int i) {
         return Stream.of(moviesArray)
                 .map(atribute -> atribute.split("\",\"")[i])
