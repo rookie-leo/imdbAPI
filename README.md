@@ -14,6 +14,12 @@ Você também terá que trabalhar com construtores, abstrações, comparadores, 
 <p>Não vi um motivo para isso, mas caso quisessemos separar por generos, faria sentido sim.</p>
 <li><b>Deve ser imutável?</b></li>
 <p>Sim, pois filmes não costumam mudar de nome ao decorrer do tempo, e também não faz sentido mudarmos sua data de lançamento ou avaliação.</p>
+
+<h3>Alguns pontos que quero compartilhar</h3>
+<p>Optei em usar o padrão builder, para aproveitar o maximo dos recursos oferecidos pela programação orientada a objetos.
+E também para encapsular o objeto principal, tornando-o imutavel, assim, para corrigirmos algum erro de digitação, será necessario
+excluir o objeto atual (método ainda não implementado até o momento), e cadastra-lo novamente.</p>
+
 <br>
 <br>
 <b>Participe você também</b>: https://7daysofcode.io/matricula/java
