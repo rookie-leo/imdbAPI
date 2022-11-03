@@ -2,9 +2,11 @@ package br.com.imdb;
 
 import br.com.imdb.gateway.client.ImdbClient;
 import br.com.imdb.gateway.model.Movie;
+import br.com.imdb.service.HTMLGenerator;
 import br.com.imdb.service.Jsonformatter;
 import br.com.imdb.gateway.model.builder.MovieBuilder;
 
+import java.io.PrintWriter;
 import java.net.http.HttpClient;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +30,9 @@ public class ImdbApplication {
 
         moviesMaker(moviesArray, titleList, urlImagesList, rating, year, movies);
 
-        movies.forEach(System.out::println);
+        HTMLGenerator htmlGenerator = new HTMLGenerator(new PrintWriter(System.out));
+
+        htmlGenerator.generate(movies);
     }
 
     private static void moviesMaker(String[] moviesArray, List<String> titleList, List<String> urlImagesList, List<String> rating, List<String> year, List<Movie> movies) {

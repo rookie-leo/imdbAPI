@@ -16,6 +16,22 @@ public class Movie {
         this.year = year;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
