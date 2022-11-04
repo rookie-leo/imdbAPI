@@ -11,13 +11,14 @@ public class ImdbClient {
     private HttpRequest request;
     private HttpResponse<String> response;
 
-    public HttpResponse<String> findTop250Movies(String apiKey, HttpClient client) {
-            String uri = "https://imdb-api.com/en/API/Top250Movies/" + apiKey;
+    public HttpResponse<String> findTop250Movies(String apiKey) {
+        var client = HttpClient.newHttpClient();
+        String uri = "https://imdb-api.com/en/API/Top250Movies/" + apiKey;
 
-            request = HttpRequest.newBuilder()
-                    .uri(URI.create(uri))
-                    .GET()
-                    .build();
+        request = HttpRequest.newBuilder()
+                .uri(URI.create(uri))
+                .GET()
+                .build();
 
         try {
             response = client.send(request, BodyHandlers.ofString());
