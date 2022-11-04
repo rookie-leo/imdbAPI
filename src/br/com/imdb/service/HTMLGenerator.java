@@ -14,13 +14,13 @@ public class HTMLGenerator {
     }
 
     public void generate(List<Movie> movies) {
-
-        System.out.println(headerGenerator());
+        writer.write(headerGenerator());
         for (Movie movie : movies) {
             String body = "<body>" + divTemplateGenerator(movie);
-            System.out.println(body);
+            writer.write(body);
         }
-        System.out.println("</body> </html>");
+        writer.write("</body> </html>");
+        writer.close();
     }
 
     private static String divTemplateGenerator(Movie movie) {

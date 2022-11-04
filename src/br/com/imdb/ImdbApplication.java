@@ -30,9 +30,7 @@ public class ImdbApplication {
 
         moviesMaker(moviesArray, titleList, urlImagesList, rating, year, movies);
 
-        HTMLGenerator htmlGenerator = new HTMLGenerator(new PrintWriter(System.out));
-
-        htmlGenerator.generate(movies);
+        new HTMLGenerator(new PrintWriter(System.out)).generate(movies);
     }
 
     private static void moviesMaker(String[] moviesArray, List<String> titleList, List<String> urlImagesList, List<String> rating, List<String> year, List<Movie> movies) {
