@@ -2,14 +2,14 @@ package br.com.imdb.gateway.model;
 
 import java.util.Objects;
 
-public class Movie implements Content {
+public class Record implements Content {
 
     private String title;
     private String urlImage;
     private Double rating;
     private Integer year;
 
-    public Movie(String title, String urlImage, Double rating, int year) {
+    public Record(String title, String urlImage, Double rating, int year) {
         this.title = title;
         this.urlImage = urlImage;
         this.rating = rating;
@@ -50,12 +50,17 @@ public class Movie implements Content {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Movie movie = (Movie) o;
+        Record movie = (Record) o;
         return year == movie.year && Objects.equals(title, movie.title) && Objects.equals(urlImage, movie.urlImage);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(title, urlImage, rating, year);
+    }
+
+    @Override
+    public int compareTo(Content o) {
+        return this.rating.compareTo(Double.parseDouble(o.rating()));
     }
 }

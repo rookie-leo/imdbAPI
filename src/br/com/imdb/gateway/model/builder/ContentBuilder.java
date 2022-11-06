@@ -1,7 +1,7 @@
 package br.com.imdb.gateway.model.builder;
 
 import br.com.imdb.gateway.model.Content;
-import br.com.imdb.gateway.model.Movie;
+import br.com.imdb.gateway.model.Record;
 
 public class ContentBuilder {
 
@@ -36,6 +36,6 @@ public class ContentBuilder {
     }
 
     public Content build() {
-        return new Movie(title, urlImage, rating, year);
+        return new Record(title, urlImage, rating, year);
     }
 }

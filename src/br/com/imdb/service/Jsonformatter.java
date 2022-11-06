@@ -20,13 +20,13 @@ public class Jsonformatter implements JsonParser {
     }
 
     @Override
-    public List<? extends Content> parse() {
+    public List<Content> parse() {
         String[] contentArray = jsonParse(response);
         List<String> titleList = titleParse(contentArray);
         List<String> urlImagesList = urlImageParse(contentArray);
         List<String> rating = rantingParse(contentArray);
         List<String> year = yearParse(contentArray);
-        List<? extends Content> contents = contentsMaker(contentArray, titleList, urlImagesList, rating, year);
+        List<Content> contents = contentsMaker(contentArray, titleList, urlImagesList, rating, year);
 
         return contents;
     }
@@ -71,7 +71,7 @@ public class Jsonformatter implements JsonParser {
                 .collect(Collectors.toList());
     }
 
-    private static List<? extends Content> contentsMaker(String[] contentArray, List<String> titleList, List<String> urlImagesList, List<String> rating, List<String> year) {
+    private static List<Content> contentsMaker(String[] contentArray, List<String> titleList, List<String> urlImagesList, List<String> rating, List<String> year) {
         List<Content> contents = new ArrayList<>();
         for (int i = 0; i < contentArray.length; i++) {
             Content content = new ContentBuilder()

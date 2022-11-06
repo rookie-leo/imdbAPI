@@ -7,6 +7,8 @@ import br.com.imdb.service.Jsonformatter;
 
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ImdbApplication {
@@ -15,8 +17,10 @@ public class ImdbApplication {
         var response = new ImdbClient().findTop250Movies(Arrays.stream(args).findFirst().get()).body();
 //TODO - tentar um response com a API da Marvel
 
-        List<? extends Content> movies = new Jsonformatter(response).parse();
+        List<Content> contents = new Jsonformatter(response).parse();
 
-        new HTMLGenerator(new PrintWriter(System.out)).generate(movies);
+        Collections.sort(contents, Comparator.comparing(Content::title));
+
+        new HTMLGenerator(new PrintWriter(System.out)).generate(contents);
     }
 }
