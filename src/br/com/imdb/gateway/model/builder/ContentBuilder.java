@@ -1,40 +1,41 @@
 package br.com.imdb.gateway.model.builder;
 
+import br.com.imdb.gateway.model.Content;
 import br.com.imdb.gateway.model.Movie;
 
-public class MovieBuilder /*implements Builder*/ {
+public class ContentBuilder {
 
     private String title;
     private String urlImage;
     private Double rating;
     private int year;
 
-    public MovieBuilder(){}
+    public ContentBuilder(){}
 
-    public MovieBuilder buildTitle(String title) {
+    public ContentBuilder buildTitle(String title) {
        this.title = title;
        return this;
     }
 
 
-    public MovieBuilder buildUrlImage(String urlImage) {
+    public ContentBuilder buildUrlImage(String urlImage) {
         this.urlImage = urlImage;
         return this;
     }
 
 
-    public MovieBuilder buildRating(String rating) {
+    public ContentBuilder buildRating(String rating) {
         this.rating = Double.parseDouble(rating);
         return this;
     }
 
 
-    public MovieBuilder buildYear(String year) {
+    public ContentBuilder buildYear(String year) {
         this.year = Integer.parseInt(year);
         return this;
     }
 
-    public Movie build() {
+    public Content build() {
         return new Movie(title, urlImage, rating, year);
     }
 }

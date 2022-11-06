@@ -1,11 +1,11 @@
 package br.com.imdb.service;
 
-import br.com.imdb.gateway.model.Movie;
+import br.com.imdb.gateway.model.Content;
 
 import java.io.PrintWriter;
 import java.util.List;
 
-public class HTMLGenerator {
+public class HTMLGenerator {//TODO - gerar um arquivo HTML
 
     private PrintWriter writer;
 
@@ -13,22 +13,22 @@ public class HTMLGenerator {
         this.writer = writer;
     }
 
-    public void generate(List<Movie> movies) {
+    public void generate(List<? extends Content> movies) {
         writer.write(headerGenerator());
-        for (Movie movie : movies) {
-            String body = "<body>" + divTemplateGenerator(movie);
+        for (Content content : movies) {
+            String body = "<body>" + divTemplateGenerator(content);
             writer.write(body);
         }
         writer.write("</body> </html>");
         writer.close();
     }
 
-    private static String divTemplateGenerator(Movie movie) {
+    private static String divTemplateGenerator(Content content) {
         String divTemplate = "<div class=\"card text-white bg-dark mb-3\" style=\"max-width: 18rem;\">" +
-                "<h4 class=\"card-header\">" + movie.getTitle() + "</h4>" +
+                "<h4 class=\"card-header\">" + content.title() + "</h4>" +
                 "<div class=\"card-body\">" +
-                "<img class=\"card-img\" src=\"" + movie.getUrlImage() + "\" alt=\"%s\">" +
-                "<p class=\"card-text mt-2\">Nota:" + movie.getRating() + "- Ano: " + movie.getYear() + "</p>" +
+                "<img class=\"card-img\" src=\"" + content.urlImage() + "\" alt=\"%s\">" +
+                "<p class=\"card-text mt-2\">Nota:" + content.rating() + "- Ano: " + content.year() + "</p>" +
                 "</div>" +
                 "</div>";
 

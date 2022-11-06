@@ -2,12 +2,12 @@ package br.com.imdb.gateway.model;
 
 import java.util.Objects;
 
-public class Movie {
+public class Movie implements Content {
 
     private String title;
     private String urlImage;
     private Double rating;
-    private int year;
+    private Integer year;
 
     public Movie(String title, String urlImage, Double rating, int year) {
         this.title = title;
@@ -16,21 +16,21 @@ public class Movie {
         this.year = year;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getUrlImage() {
-        return urlImage;
-    }
-
-    public Double getRating() {
-        return rating;
-    }
-
-    public int getYear() {
-        return year;
-    }
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public String getUrlImage() {
+//        return urlImage;
+//    }
+//
+//    public Double getRating() {
+//        return rating;
+//    }
+//
+//    public int getYear() {
+//        return year;
+//    }
 
     @Override
     public String toString() {
@@ -53,5 +53,25 @@ public class Movie {
     @Override
     public int hashCode() {
         return Objects.hash(title, urlImage, rating, year);
+    }
+
+    @Override
+    public String title() {
+        return title;
+    }
+
+    @Override
+    public String urlImage() {
+        return urlImage;
+    }
+
+    @Override
+    public String rating() {
+        return rating.toString();
+    }
+
+    @Override
+    public String year() {
+        return year.toString();
     }
 }
